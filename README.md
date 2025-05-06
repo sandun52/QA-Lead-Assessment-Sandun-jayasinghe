@@ -16,3 +16,22 @@ pm.test("Data verify",()=>{
    
 
 })
+
+
+post
+https://jsonplaceholder.typicode.com//posts
+
+pm.test("Status code is 201",()=>pm.response.to.have.status(201));
+
+pm.test("Should have id ",()=>{
+    let jsonData =pm.response.json();
+    pm.expect(jsonData).to.have.property("id");
+})
+
+Body
+  {
+        "userId": 1,
+        "id": 112,
+        "title": "test",
+        "body": "qtest_testuia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    }
