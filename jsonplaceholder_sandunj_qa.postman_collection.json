@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "4b4c5446-efa8-4785-b577-f1fbbea4e205",
+		"name": "jsonplaceholder_sandunj_qa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1123816",
+		"_collection_link": "https://warped-desert-254915.postman.co/workspace/deviceoffer~c2d1e49a-ec56-4221-b931-2af7b3174fc8/collection/1123816-4b4c5446-efa8-4785-b577-f1fbbea4e205?action=share&source=collection_link&creator=1123816"
+	},
+	"item": [
+		{
+			"name": "Get_jsonplaceholder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",()=>{pm.response.to.have.status(200);});\r",
+							"pm.test(\"Response is an array\",()=>{const jsonData=pm.response.json();\r",
+							"pm.expect(Array.isArray(jsonData)).to.be.true});\r",
+							"\r",
+							"pm.test(\"Data verify\",()=>{\r",
+							"    const jsonData=pm.response.json();\r",
+							"    const first=jsonData[0];\r",
+							"    pm.expect(first).to.have.property(\"userId\");\r",
+							"     pm.expect(first).to.have.property(\"id\");\r",
+							"     pm.expect(first).to.have.property(\"title\");\r",
+							"     pm.expect(first).to.have.property(\"body\");\r",
+							"   \r",
+							"\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com//posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post_jsonplaceholder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\",()=>pm.response.to.have.status(201));\r",
+							"\r",
+							"pm.test(\"Should have id \",()=>{\r",
+							"    let jsonData =pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"userId\": 1,\r\n        \"id\": 112,\r\n        \"title\": \"test\",\r\n        \"body\": \"qtest_testuia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com//posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put_jsonplaceholder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",()=>pm.response.to.have.status(200));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"userId\": 10,\r\n        \"id\": 112,\r\n        \"title\": \"test sandun\",\r\n        \"body\": \"qtest_testuia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com//posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_jsonplaceholder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",()=>pm.response.to.have.status(200));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com//posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
